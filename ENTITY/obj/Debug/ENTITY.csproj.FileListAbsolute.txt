@@ -1,0 +1,5 @@
+C:\Users\HP\Desktop\Proyecto Anya\ENTITY\bin\Debug\ENTITY.dll
+C:\Users\HP\Desktop\Proyecto Anya\ENTITY\bin\Debug\ENTITY.pdb
+C:\Users\HP\Desktop\Proyecto Anya\ENTITY\obj\Debug\ENTITY.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\Proyecto Anya\ENTITY\obj\Debug\ENTITY.dll
+C:\Users\HP\Desktop\Proyecto Anya\ENTITY\obj\Debug\ENTITY.pdb
