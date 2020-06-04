@@ -12,17 +12,17 @@ namespace BLL
 {
     public class ClienteService
     {
-       
+
         public Cliente cliente;
         public List<Cliente> Clientes;
         ClienteRepository ClienteRepository;
         CreditoService creditoService;
         private ConnectionManager connection;
-        
+
 
         public ClienteService(string connectionString)
         {
-            
+
             connection = new ConnectionManager(connectionString);
             ClienteRepository = new ClienteRepository(connection);
             creditoService = new CreditoService();
@@ -52,6 +52,7 @@ namespace BLL
                 if (ClienteRepository.BuscarEstadoCliente(cliente.Identificacion))
                 {
                     creditoService.Registrar(credito);
+
                     mensajeCorreo = correo.EnviarEmail(cliente);
                     connection.Closed();
                     return $"Ya Existe un cliente registrado con esta identificacion pero su estado es Inactivo. Se volvio activo y se le hizo el prestamo. {mensajeCorreo}";
@@ -84,14 +85,23 @@ namespace BLL
         public void GenerarExcel()
         {
             Exel excel = new Exel();
-            excel.GenerarReporteClientes(ClienteRepository.Clientes);
+            excel.GenerarReporteClientes(Clientes);
+
         }
         public Cliente InformacionCliente()
         {
             return ClienteRepository.cliente;
         }
 
+        public void EnviarReporte(string correo )
+        {
+            Exel excel = new Exel();
+            excel.GenerarReporteClientes(Clientes);
+            Correo correos = new Correo();
+            String mensajeCorreo;
+            mensajeCorreo = correos.EnviarEmailExel(correos.ruta);
 
+        }
 
 
 

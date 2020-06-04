@@ -43,6 +43,7 @@ namespace DAL
                 Clientes.Add(cliente);
             }
             return Clientes;
+           
         }
 
         public void ActualizarEstado(string identificacion)

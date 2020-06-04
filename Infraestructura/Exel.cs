@@ -10,6 +10,7 @@ namespace Infraestructura
 {
    public class Exel
     {
+        
         public void GenerarReporteClientes(List<Cliente> clientes)
         {
             var worbook = new XLWorkbook();
@@ -21,7 +22,6 @@ namespace Infraestructura
             worShet.Cell("C2").Value = "Telefono";
             worShet.Cell("D2").Value = "Correo";
             worShet.Cell("E2").Value = "Direccion";
-            worShet.Cell("F2").Value = "Estado";
             foreach (Cliente cliente in clientes)
             {
                 worShet.Cell($"A{i}").Value = cliente.Identificacion;
@@ -29,10 +29,10 @@ namespace Infraestructura
                 worShet.Cell($"C{i}").Value = cliente.Telefono;
                 worShet.Cell($"D{i}").Value = cliente.Correo;
                 worShet.Cell($"E{i}").Value = cliente.Direccion;
-                worShet.Cell($"F{i}").Value = cliente.Estado;
                 i++;
             }
             worbook.SaveAs(@"C:\Reportes PAYMENTF\ReporteClientesActual.xlsx");
+            
         }
         public void GenerarReporteCreditos(List<Credito> creditos)
         {

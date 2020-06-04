@@ -46,6 +46,9 @@
             this.btnGenerarExcel = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.COREOEXEL = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataCartera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataClientes)).BeginInit();
@@ -56,7 +59,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(181, 72);
+            this.label1.Location = new System.Drawing.Point(180, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 15);
             this.label1.TabIndex = 1;
@@ -66,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(568, 72);
+            this.label2.Location = new System.Drawing.Point(567, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 15);
             this.label2.TabIndex = 2;
@@ -76,7 +79,7 @@
             // 
             this.DataIngresos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DataIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataIngresos.Location = new System.Drawing.Point(47, 88);
+            this.DataIngresos.Location = new System.Drawing.Point(46, 42);
             this.DataIngresos.Name = "DataIngresos";
             this.DataIngresos.Size = new System.Drawing.Size(358, 150);
             this.DataIngresos.TabIndex = 3;
@@ -85,7 +88,7 @@
             // 
             this.DataCartera.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DataCartera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataCartera.Location = new System.Drawing.Point(415, 88);
+            this.DataCartera.Location = new System.Drawing.Point(414, 40);
             this.DataCartera.Name = "DataCartera";
             this.DataCartera.Size = new System.Drawing.Size(358, 150);
             this.DataCartera.TabIndex = 4;
@@ -94,7 +97,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(181, 241);
+            this.label3.Location = new System.Drawing.Point(180, 193);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 5;
@@ -104,7 +107,7 @@
             // 
             this.DataClientes.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DataClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataClientes.Location = new System.Drawing.Point(47, 257);
+            this.DataClientes.Location = new System.Drawing.Point(46, 209);
             this.DataClientes.Name = "DataClientes";
             this.DataClientes.Size = new System.Drawing.Size(358, 150);
             this.DataClientes.TabIndex = 6;
@@ -190,6 +193,7 @@
             this.btnGenerarExcel.Text = "GENERAR EXCEL";
             this.btnGenerarExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGenerarExcel.UseVisualStyleBackColor = false;
+            this.btnGenerarExcel.Click += new System.EventHandler(this.btnGenerarExcel_Click);
             // 
             // btnCerrar
             // 
@@ -197,7 +201,7 @@
             this.btnCerrar.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrar.Location = new System.Drawing.Point(658, 413);
+            this.btnCerrar.Location = new System.Drawing.Point(657, 439);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(121, 29);
             this.btnCerrar.TabIndex = 16;
@@ -217,10 +221,36 @@
             this.panel2.Controls.Add(this.txtDineroprestado);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtDinerodisponible);
-            this.panel2.Location = new System.Drawing.Point(415, 257);
+            this.panel2.Location = new System.Drawing.Point(414, 209);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(364, 150);
             this.panel2.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(171, 399);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "CORREO";
+            // 
+            // COREOEXEL
+            // 
+            this.COREOEXEL.Location = new System.Drawing.Point(230, 392);
+            this.COREOEXEL.Name = "COREOEXEL";
+            this.COREOEXEL.Size = new System.Drawing.Size(292, 20);
+            this.COREOEXEL.TabIndex = 19;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(540, 389);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(180, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "GENERAR Y ENVIAR";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmCartera
             // 
@@ -228,6 +258,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(838, 518);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.COREOEXEL);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.DataClientes);
@@ -267,5 +300,8 @@
         private System.Windows.Forms.Button btnGenerarExcel;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox COREOEXEL;
+        private System.Windows.Forms.Button button1;
     }
 }
