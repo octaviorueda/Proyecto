@@ -87,6 +87,7 @@
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // panel2
             // 
@@ -161,6 +162,7 @@
             this.btnAbonar.Text = "ABONAR";
             this.btnAbonar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAbonar.UseVisualStyleBackColor = false;
+            this.btnAbonar.Click += new System.EventHandler(this.btnAbonar_Click);
             // 
             // btnAplicarinteres
             // 
@@ -174,6 +176,7 @@
             this.btnAplicarinteres.Text = " INTERES";
             this.btnAplicarinteres.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAplicarinteres.UseVisualStyleBackColor = false;
+            this.btnAplicarinteres.Click += new System.EventHandler(this.btnAplicarinteres_Click);
             // 
             // txtValorcuotas
             // 

@@ -10,19 +10,20 @@ namespace DAL
 {
     public class PagoRepository
     {
-        private SqlConnection Conexion = null;
+         SqlConnection Connection;
         private SqlCommand OrdenSql;
         private SqlDataReader Lector;
         private Pago Pago;
         public List<Pago> Pagos = new List<Pago>();
 
-        public PagoRepository(SqlConnection conexion)
+        public PagoRepository(ConnectionManager connection)
         {
-            Conexion = conexion;
+            Connection = connection.Connection;
+           
         }
         public void RegistrarPago(Pago Pago)
         {
-            using (var Comando = Conexion.CreateCommand())
+            using (var Comando = Connection.CreateCommand())
             {
                 Comando.CommandText = "insert into Pago (IdPago, IdCliente, IdCredito, Fecha, ValorPago) values(@IdPago, @IdCliente, @IdCredito, @Fecha, @ValorPago)";
                 Comando.Parameters.Add("@IdPago", System.Data.SqlDbType.VarChar).Value = Pago.IdPago;
@@ -36,10 +37,10 @@ namespace DAL
 
         public List<Pago> MostrarPagos()
         {
-            Conexion.Close();
-            Conexion.Open();
+            Connection.Close();
+            Connection.Open();
             string Consulta = "Select * from Pago";
-            OrdenSql = new SqlCommand(Consulta, Conexion);
+            OrdenSql = new SqlCommand(Consulta, Connection);
             Lector = OrdenSql.ExecuteReader();
             while (Lector.Read())
             {
@@ -59,7 +60,7 @@ namespace DAL
         {
             string codigo;
             string Consulta = "select codigoPago from Codigos";
-            OrdenSql = new SqlCommand(Consulta, Conexion);
+            OrdenSql = new SqlCommand(Consulta, Connection);
             Lector = OrdenSql.ExecuteReader();
             Lector.Read();
             codigo = Convert.ToString(Lector["CodigoPago"]);
@@ -69,9 +70,9 @@ namespace DAL
 
         public void ActualizarCodigo(string codigo)
         {
-            Conexion.Close();
-            Conexion.Open();
-            using (var Comando = Conexion.CreateCommand())
+            Connection.Close();
+            Connection.Open();
+            using (var Comando = Connection.CreateCommand())
             {
                 Comando.CommandText = $"update Codigos set codigoPago = {Convert.ToInt32(codigo)}+1";
                 Comando.ExecuteNonQuery();

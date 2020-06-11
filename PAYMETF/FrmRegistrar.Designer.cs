@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegistrar));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TxtcantidadCuota = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnCalcularcuotas = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtDireccion = new System.Windows.Forms.TextBox();
@@ -47,14 +49,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.TxtcantidadCuota = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel2.BackColor = System.Drawing.Color.Cyan;
             this.panel2.Controls.Add(this.TxtcantidadCuota);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.btnCalcularcuotas);
@@ -77,6 +77,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(640, 287);
             this.panel2.TabIndex = 1;
+            // 
+            // TxtcantidadCuota
+            // 
+            this.TxtcantidadCuota.Location = new System.Drawing.Point(144, 183);
+            this.TxtcantidadCuota.Name = "TxtcantidadCuota";
+            this.TxtcantidadCuota.Size = new System.Drawing.Size(147, 20);
+            this.TxtcantidadCuota.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(3, 180);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(135, 15);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "CANTIDAD DE CUOTA";
             // 
             // btnCalcularcuotas
             // 
@@ -248,24 +266,6 @@
             this.btnCerrar.Text = "CERRAR";
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(3, 180);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(135, 15);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "CANTIDAD DE CUOTA";
-            // 
-            // TxtcantidadCuota
-            // 
-            this.TxtcantidadCuota.Location = new System.Drawing.Point(144, 183);
-            this.TxtcantidadCuota.Name = "TxtcantidadCuota";
-            this.TxtcantidadCuota.Size = new System.Drawing.Size(147, 20);
-            this.TxtcantidadCuota.TabIndex = 18;
             // 
             // FrmRegistrar
             // 

@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigConnection.cs" />
+    <Compile Include="EnviarReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnviarReportes.Designer.cs">
+      <DependentUpon>EnviarReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAbono.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,10 @@
     <Compile Include="FrmRegistrar.Designer.cs">
       <DependentUpon>FrmRegistrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes.cs" />
+    <EmbeddedResource Include="EnviarReportes.resx">
+      <DependentUpon>EnviarReportes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAbono.resx">
       <DependentUpon>FrmAbono.cs</DependentUpon>
     </EmbeddedResource>

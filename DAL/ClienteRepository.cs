@@ -90,33 +90,60 @@ namespace DAL
 
         public bool BuscarEstadoCliente(string identificacion)
         {
-            MostrarCliente();
-            List<Cliente> EstadoCliente = Clientes.FindAll(cliente => cliente.Identificacion == identificacion && cliente.Estado == "Inactivo");
-            if (EstadoCliente.Count == 0)
+            try
             {
-                return false;
+                MostrarCliente();
+                List<Cliente> EstadoCliente = Clientes.FindAll(cliente => cliente.Identificacion == identificacion && cliente.Estado == "Inactivo");
+                if (EstadoCliente.Count == 0)
+                {
+                    return false;
+                }
+                ActualizarCliente("Estado", "Activo", EstadoCliente[0].Identificacion);
+                return true;
+
             }
-            ActualizarCliente("Estado", "Activo", EstadoCliente[0].Identificacion);
-            return true;
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            
         }
 
 
 
         public void RegistarCliente(Cliente cliente) 
         {
-            Connection.Close();
-            Connection.Open();
-            using (var comando = Connection.CreateCommand())
+            try
             {
-                comando.CommandText = "Insert into Cliente (Nombre, Direccion, Correo, Telefono, Identificacion) values(@Nombre, @Direccion, @Correo, @Telefono, @Identificacion)";
-                comando.Parameters.Add("@Nombre", System.Data.SqlDbType.VarChar).Value = cliente.Nombre;
-                comando.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = cliente.Direccion;
-                comando.Parameters.Add("@Correo", System.Data.SqlDbType.VarChar).Value = cliente.Correo;
-                comando.Parameters.Add("@Telefono", System.Data.SqlDbType.VarChar).Value = cliente.Telefono;
-                comando.Parameters.Add("@Identificacion", System.Data.SqlDbType.VarChar).Value = cliente.Identificacion;
-                comando.ExecuteNonQuery();
+                
+               
+                using (var comando = Connection.CreateCommand())
+                {
+                    comando.CommandText = "Insert into Cliente (Nombre, Direccion, Correo, Telefono, Identificacion,Estado) values(@Nombre, @Direccion, @Correo, @Telefono, @Identificacion,@Estado)";
+                    comando.Parameters.Add("@Nombre", System.Data.SqlDbType.VarChar).Value = cliente.Nombre;
+                    comando.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = cliente.Direccion;
+                    comando.Parameters.Add("@Correo", System.Data.SqlDbType.VarChar).Value = cliente.Correo;
+                    comando.Parameters.Add("@Telefono", System.Data.SqlDbType.VarChar).Value = cliente.Telefono;
+                    comando.Parameters.Add("@Identificacion", System.Data.SqlDbType.VarChar).Value = cliente.Identificacion;
+                    comando.Parameters.Add("@Estado", System.Data.SqlDbType.VarChar).Value = cliente.Estado;
+                    comando.ExecuteNonQuery();
+                }
+                
+
+
+
             }
-            Connection.Close();        
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+                Connection.Close();
+            }       
+            
         }
 
 

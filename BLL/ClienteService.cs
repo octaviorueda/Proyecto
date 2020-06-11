@@ -25,61 +25,123 @@ namespace BLL
 
             connection = new ConnectionManager(connectionString);
             ClienteRepository = new ClienteRepository(connection);
-            creditoService = new CreditoService();
+            creditoService = new CreditoService(connectionString);
 
         }
 
         public List<Cliente> MostrarClientes()
         {
-            connection.Open();
-            Clientes = ClienteRepository.MostrarCliente();
-            connection.Closed();
-            return Clientes;
+            try
+            {
+                connection.Open();
+                Clientes = ClienteRepository.MostrarCliente();
+                return Clientes;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+                connection.Closed();
+            }
+
+            
         }
         public void ActualizarEstado(String Identificacion)
         {
-            connection.Open();
-            ClienteRepository.ActualizarEstado(Identificacion);
-            connection.Closed();
+            try
+            {
+                connection.Open();
+                ClienteRepository.ActualizarEstado(Identificacion);
+                
+
+            }
+            catch (Exception e )
+            {
+
+                throw;
+            }
+            finally 
+            {
+                connection.Closed();
+
+            }
+
+
+
+            
         }
         public String Registrar(Cliente cliente, Credito credito)
         {
-            Correo correo = new Correo();
-            String mensajeCorreo;
-            connection.Open();
-            if (ClienteRepository.BuscarExisteCliente(cliente.Identificacion))
-            {
-                if (ClienteRepository.BuscarEstadoCliente(cliente.Identificacion))
-                {
-                    creditoService.Registrar(credito);
 
-                    mensajeCorreo = correo.EnviarEmail(cliente);
-                    connection.Closed();
-                    return $"Ya Existe un cliente registrado con esta identificacion pero su estado es Inactivo. Se volvio activo y se le hizo el prestamo. {mensajeCorreo}";
-                }
-                else
+            try
+            {
+                Correo correo = new Correo();
+                String mensajeCorreo;
+                connection.Open();
+                if (ClienteRepository.BuscarExisteCliente(cliente.Identificacion))
                 {
-                    connection.Closed();
-                    return "Ya existe un cliente con esta identificacion pero su estado es activo, asi que no se puede hacer el prestamo.";
+                    if (ClienteRepository.BuscarEstadoCliente(cliente.Identificacion))
+                    {
+                        creditoService.Registrar(credito);
+
+                        mensajeCorreo = correo.EnviarEmail(cliente);
+                        
+                        return $"Ya Existe un cliente registrado con esta identificacion pero su estado es Inactivo. Se volvio activo y se le hizo el prestamo. {mensajeCorreo}";
+                    }
+                    else
+                    {
+                       
+                        return "Ya existe un cliente con esta identificacion pero su estado es activo, asi que no se puede hacer el prestamo.";
+                    }
                 }
+                mensajeCorreo = correo.EnviarEmail(cliente);
+                ClienteRepository.RegistarCliente(cliente);
+                creditoService.Registrar(credito);
+               
+                return $"Registrado correctamente. {mensajeCorreo}";
+
             }
-            mensajeCorreo = correo.EnviarEmail(cliente);
-            ClienteRepository.RegistarCliente(cliente);
-            creditoService.Registrar(credito);
-            connection.Closed();
-            return $"Registrado correctamente. {mensajeCorreo}";
+            catch (Exception e)
+            {
+
+                return ("no se pudo registar el clinete" + e.Message);
+            }
+            finally 
+            {
+                connection.Closed();
+            }  
+
+            
         }
 
         public bool BuscarInformacion(String Identificacion)
         {
-            connection.Open();
-            if (ClienteRepository.BuscarInformacion(Identificacion))
+            try
+            {
+                connection.Open();
+                if (ClienteRepository.BuscarInformacion(Identificacion))
+                {
+                    connection.Closed();
+                    return true;
+                }
+                
+                return false;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
             {
                 connection.Closed();
-                return true;
             }
-            connection.Closed();
-            return false;
+
+          
         }
 
         public void GenerarExcel()
@@ -93,15 +155,7 @@ namespace BLL
             return ClienteRepository.cliente;
         }
 
-        public void EnviarReporte(string correo )
-        {
-            Exel excel = new Exel();
-            excel.GenerarReporteClientes(Clientes);
-            Correo correos = new Correo();
-            String mensajeCorreo;
-            mensajeCorreo = correos.EnviarEmailExel(correos.ruta);
-
-        }
+       
 
 
 

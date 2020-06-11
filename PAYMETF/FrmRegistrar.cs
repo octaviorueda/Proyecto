@@ -25,7 +25,7 @@ namespace PAYMETF
         public FrmRegistrar()
         {
             InitializeComponent();
-            carteraService = new CarteraService();
+            carteraService = new CarteraService(ConfigConnection.connectionString);
             clienteService = new ClienteService(ConfigConnection.connectionString);
         }
 
@@ -287,14 +287,13 @@ namespace PAYMETF
                 Credito credito = new Credito
                 {
                     IdCliente = cliente.Identificacion,
-                    IdCredito = cliente.Identificacion,
                     NumeroCuotas = Convert.ToInt32(CantidadCuotas),
                     Saldo = Convert.ToDouble(txtPrestamo.Text.Trim()) * 0.16 + Convert.ToDouble(txtPrestamo.Text.Trim()),
                     Cuota = Convert.ToDouble(txtValorcuota.Text.Trim())
                 };
                 credito.Interes = credito.Cuota * 0.16;
-                //carteraService.ActualizarCanttidadDeudores();
-                //carteraService.ActualizarDineroPrestado(Convert.ToDouble(txtPrestamo.Text.Trim()));
+                carteraService.ActualizarCanttidadDeudores();
+                carteraService.ActualizarDineroPrestado(Convert.ToDouble(txtPrestamo.Text.Trim()));
 
                 MessageBox.Show(clienteService.Registrar(cliente, credito));
                 limpiar();

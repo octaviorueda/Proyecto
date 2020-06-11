@@ -27,3 +27,4 @@ C:\Users\HP\Desktop\Proyecto Anya\PAYMETF\bin\Debug\ClosedXML.pdb
 C:\Users\HP\Desktop\Proyecto Anya\PAYMETF\bin\Debug\ClosedXML.xml
 C:\Users\HP\Desktop\Proyecto Anya\PAYMETF\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\HP\Desktop\Proyecto Anya\PAYMETF\bin\Debug\ExcelNumberFormat.xml
+C:\Users\HP\Desktop\Proyecto Anya\PAYMETF\obj\Debug\PAYMETF.EnviarReportes.resources

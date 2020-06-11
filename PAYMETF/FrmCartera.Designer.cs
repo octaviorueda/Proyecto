@@ -46,9 +46,6 @@
             this.btnGenerarExcel = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.COREOEXEL = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataCartera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataClientes)).BeginInit();
@@ -111,6 +108,7 @@
             this.DataClientes.Name = "DataClientes";
             this.DataClientes.Size = new System.Drawing.Size(358, 150);
             this.DataClientes.TabIndex = 6;
+            this.DataClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataClientes_CellContentClick);
             // 
             // label4
             // 
@@ -226,41 +224,12 @@
             this.panel2.Size = new System.Drawing.Size(364, 150);
             this.panel2.TabIndex = 17;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(171, 399);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 13);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "CORREO";
-            // 
-            // COREOEXEL
-            // 
-            this.COREOEXEL.Location = new System.Drawing.Point(230, 392);
-            this.COREOEXEL.Name = "COREOEXEL";
-            this.COREOEXEL.Size = new System.Drawing.Size(292, 20);
-            this.COREOEXEL.TabIndex = 19;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(540, 389);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "GENERAR Y ENVIAR";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FrmCartera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(838, 518);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.COREOEXEL);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.DataClientes);
@@ -300,8 +269,5 @@
         private System.Windows.Forms.Button btnGenerarExcel;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox COREOEXEL;
-        private System.Windows.Forms.Button button1;
     }
 }

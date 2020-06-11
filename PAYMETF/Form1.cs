@@ -89,5 +89,10 @@ namespace PAYMETF
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            abrirfrom(new EnviarReportes());
+        }
     }
 }

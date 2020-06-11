@@ -36,10 +36,10 @@ namespace PAYMETF
         }
         private void inizializar()
         {
-            carteraService = new CarteraService();
+            carteraService = new CarteraService(ConfigConnection.connectionString);
             
-            creditoService = new CreditoService();
-            pagoService = new PagoService();
+            creditoService = new CreditoService(ConfigConnection.connectionString);
+            pagoService = new PagoService(ConfigConnection.connectionString);
             Cartera = carteraService.MostrarCartera();
             pagos = pagoService.MostrarPagos();
             Clientes = clienteService.MostrarClientes();
@@ -82,16 +82,21 @@ namespace PAYMETF
         private void btnGenerarExcel_Click(object sender, EventArgs e)
         {
             clienteService.GenerarExcel();
-            
+            creditoService.GenerarExcel();
+            pagoService.GenerarExcel();
             MessageBox.Show("Reportes Generados correctamente.");
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            clienteService.GenerarExcel();
-            string Correo = COREOEXEL.Text.Trim();
-            clienteService.EnviarReporte(Correo);
+           
+           
+        }
+
+        private void DataClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

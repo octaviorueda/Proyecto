@@ -10,14 +10,14 @@ namespace DAL
 {
    public class CarteraRepository
     {
-        private SqlConnection Conexion = null;
+        private SqlConnection Conexion;
         private SqlCommand OrdenSql;
         private SqlDataReader Lector;
         public Cartera cartera = new Cartera();
 
-        public CarteraRepository(SqlConnection conexion)
+        public CarteraRepository(ConnectionManager connection)
         {
-            Conexion = conexion;
+            Conexion = connection.Connection;
         }
 
         public void ActualizarDineroPrestado(double CantidadPrestado)

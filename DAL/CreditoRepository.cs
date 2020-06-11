@@ -10,19 +10,19 @@ namespace DAL
 {
    public  class CreditoRepository
     {
-        private SqlConnection Conexion = null;
+         SqlConnection Connection;
         private SqlCommand OrdenSql;
         private SqlDataReader Lector;
         public List<Credito> Creditos = new List<Credito>();
         public Credito Credito;
 
-        public CreditoRepository(SqlConnection conexion)
+        public CreditoRepository(ConnectionManager connection)
         {
-            Conexion = conexion;
+           Connection = connection.Connection;
         }
         public void RegistrarCredito(Credito credito)
         {
-            using (var Comando = Conexion.CreateCommand())
+            using (var Comando = Connection.CreateCommand())
             {
                 Comando.CommandText = "Insert into Credito (IdCredito, IdCliente, Saldo, Cuota, NumeroCuota, interes) values(@IdCredito, @IdCliente, @Saldo, @Cuota, @NumeroCuota, @Interes)";
                 Comando.Parameters.Add("@IdCredito", System.Data.SqlDbType.VarChar).Value = credito.IdCredito;
@@ -47,10 +47,10 @@ namespace DAL
         }
         private void ActualizarCreditoSql(Credito credito)
         {
-            Conexion.Close();
-            Conexion.Open();
+            Connection.Close();
+            Connection.Open();
 
-            using (var Comando = Conexion.CreateCommand())
+            using (var Comando = Connection.CreateCommand())
             {
                 Comando.CommandText = $"update Credito set Saldo = {credito.Saldo}, Cuota = {credito.Cuota}, NumeroCuota = {credito.NumeroCuotas}where IdCredito = {credito.IdCredito}";
                 Comando.ExecuteNonQuery();
@@ -58,10 +58,10 @@ namespace DAL
         }
         public List<Credito> MostrarCreditos()
         {
-            Conexion.Close();
-            Conexion.Open();
+            Connection.Close();
+            Connection.Open();
             string Consulta = "Select * from Credito";
-            OrdenSql = new SqlCommand(Consulta, Conexion);
+            OrdenSql = new SqlCommand(Consulta, Connection);
             Lector = OrdenSql.ExecuteReader();
             while (Lector.Read())
             {
@@ -83,7 +83,7 @@ namespace DAL
         {
             string codigo;
             string Consulta = "select codigoCredito from Codigos";
-            OrdenSql = new SqlCommand(Consulta, Conexion);
+            OrdenSql = new SqlCommand(Consulta, Connection);
             Lector = OrdenSql.ExecuteReader();
             Lector.Read();
             codigo = Convert.ToString(Lector["codigoCredito"]);
@@ -93,9 +93,9 @@ namespace DAL
 
         public void ActualizarCodigo(string codigo)
         {
-            Conexion.Close();
-            Conexion.Open();
-            using (var Comando = Conexion.CreateCommand())
+            Connection.Close();
+            Connection.Open();
+            using (var Comando = Connection.CreateCommand())
             {
                 Comando.CommandText = $"update Codigos  set codigoCredito = {Convert.ToInt32(codigo)}+1";
                 Comando.ExecuteNonQuery();

@@ -13,38 +13,38 @@ namespace BLL
 {
     public class CreditoService
     {
-        private SqlConnection Conexion = null;
+      
         public Credito Credito;
         CreditoRepository CreditoRepository;
         List<Credito> Creditos;
+        private ConnectionManager connection;
 
-        public CreditoService()
+        public CreditoService(string connetionstring)
         {
-            string strConexion = "Data Source=LAPTOP-GT43H27V\\SQLEXPRESS;Initial Catalog=payment; Integrated Security=True ";
-            Conexion = new SqlConnection(strConexion);
-            CreditoRepository = new CreditoRepository(Conexion);
+            connection = new ConnectionManager(connetionstring);
+            CreditoRepository = new CreditoRepository(connection);
         }
 
         public void Registrar(Credito credito)
         {
-            Conexion.Open();
+            connection.Open();
             credito.IdCredito = CreditoRepository.ObtenerCodigo();
             CreditoRepository.RegistrarCredito(credito);
-            Conexion.Close();
+            connection.Closed();
         }
 
         public Credito BuscarCedito(String IdentifiacionCliente)
         {
-            Conexion.Open();
+            connection.Open();
             CreditoRepository.BuscarCredito(IdentifiacionCliente);
-            Conexion.Close();
+            connection.Closed();
             return CreditoRepository.Credito;
         }
         public void ActualizarCredito(Credito credito)
         {
-            Conexion.Open();
+            connection.Open();
             CreditoRepository.ActualizarCredito(credito);
-            Conexion.Close();
+            connection.Closed();
         }
         public void GenerarExcel()
         {
@@ -53,9 +53,9 @@ namespace BLL
         }
         public List<Credito> MostrarCredito()
         {
-            Conexion.Open();
+            connection.Open();
             Creditos = CreditoRepository.MostrarCreditos();
-            Conexion.Close();
+            connection.Closed();
             return Creditos;
         }
 

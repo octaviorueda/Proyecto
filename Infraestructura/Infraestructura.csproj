@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Correo.cs" />
+    <Compile Include="CorreoArchivos.cs" />
     <Compile Include="Exel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

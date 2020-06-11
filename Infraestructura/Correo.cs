@@ -10,7 +10,7 @@ namespace Infraestructura
 {
     public class Correo
     {
-       public  string ruta = @"C:\Reportes PAYMENTF";
+       
         private MailMessage email;
         private SmtpClient smtp;
         Exel exel;
@@ -39,45 +39,13 @@ namespace Infraestructura
             email.IsBodyHtml = true;
             email.Priority = MailPriority.Normal;
         }
-        private void ConfigurarEmailExel(string correo)
-        {
-            email = new MailMessage();
-            email.To.Add(correo);
-            email.From = new MailAddress("Paymenttofeets@gmail.com");
-            email.Subject = $"Registro Exitoso";
-            email.Body = $"<b>Sr {correo }</b> <br " +
-            $" > el reporte de los clientes se ecuentra adjunto en este archivo";
-            email.Attachments.Add(new Attachment(ruta));
-            email.IsBodyHtml = true;
-            email.Priority = MailPriority.Normal;
-        }
+       
         public string EnviarEmail(Cliente cliente)
         {
             try
             {
                 ConfigurarSmt();
                 ConfigurarEmail(cliente);
-                smtp.Send(email);
-                return ("Correo enviado Satifactoriamente");
-            }
-            catch (Exception e)
-            {
-                return ("error al enviar correo" + e.Message);
-            }
-            finally
-            {
-                email.Dispose();
-            }
-
-        }
-
-
-        public string EnviarEmailExel(string correo)
-        {
-            try
-            {
-                ConfigurarSmt();
-                ConfigurarEmailExel(correo);
                 smtp.Send(email);
                 return ("Correo enviado Satifactoriamente");
             }

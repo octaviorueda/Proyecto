@@ -13,54 +13,55 @@ namespace BLL
 {
    public  class CarteraService
     {
-        private SqlConnection Conexion = null;
+       
         CarteraRepository CarteraRepository;
         public Cartera Cartera;
-        public CarteraService()
+        private ConnectionManager connection;
+        public CarteraService(string connectionstring)
         {
-            string strConexion = "Data Source=LAPTOP-GT43H27V\\SQLEXPRESS;Initial Catalog=payment; Integrated Security=True ";
-            Conexion = new SqlConnection(strConexion);
-            CarteraRepository = new CarteraRepository(Conexion);
+
+            connection = new ConnectionManager(connectionstring);
+            CarteraRepository = new CarteraRepository(connection);
         }
         public void ActualizarCanttidadDeudoresMenos()
         {
-            Conexion.Open();
+            connection.Open();
             CarteraRepository.ActualizarCantidadDeudoresMenos();
-            Conexion.Close();
+            connection.Closed();
         }
         public void ActualizarCanttidadDeudores()
         {
-            Conexion.Open();
+            connection.Open();
             CarteraRepository.ActualizarCantidadDeudores();
-            Conexion.Close();
+            connection.Closed();
         }
         public void ActualizarDineroPrestado(double CantidadPrestado)
         {
-            Conexion.Open();
+            connection.Open();
             CarteraRepository.ActualizarDineroPrestado(CantidadPrestado);
-            Conexion.Close();
+            connection.Closed();
         }
 
         public void ActualizarDineroRestante(double CantidadAbono)
         {
-            Conexion.Open();
+            connection.Open();
             CarteraRepository.ActualizarDineroRestante(CantidadAbono);
-            Conexion.Close();
+            connection.Closed();
         }
 
         public bool ValidarDineroRestante(double CantidadPrestamo)
         {
             bool SiNo;
-            Conexion.Open();
+            connection.Open();
             SiNo = CarteraRepository.ValidarDineroRestante(CantidadPrestamo);
-            Conexion.Close();
+            connection.Closed();
             return SiNo;
         }
         public Cartera MostrarCartera()
         {
-            Conexion.Open();
+            connection.Open();
             Cartera = CarteraRepository.MostrarCartera();
-            Conexion.Close();
+            connection.Closed();
             return Cartera;
         }
 

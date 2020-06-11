@@ -13,21 +13,21 @@ namespace BLL
    public class PagoService
     {
         PagoRepository PagoRepository;
+        private ConnectionManager connection;
+        
 
-        private SqlConnection Conexion = null;
-
-        public PagoService()
+        public PagoService(string connectionString)
         {
-            string strConexion = "Data Source=LAPTOP-GT43H27V\\SQLEXPRESS;Initial Catalog=payment; Integrated Security=True ";
-            Conexion = new SqlConnection(strConexion);
-            PagoRepository = new PagoRepository(Conexion);
+            connection = new ConnectionManager(connectionString);
+           
+            PagoRepository = new PagoRepository(connection);
         }
         public void RegistrarPago(Pago Pago)
         {
-            Conexion.Open();
+            connection.Open();
             Pago.IdPago = PagoRepository.ObtenerCodigo();
             PagoRepository.RegistrarPago(Pago);
-            Conexion.Close();
+            connection.Closed();
         }
         public void GenerarExcel()
         {
@@ -36,9 +36,9 @@ namespace BLL
         }
         public List<Pago> MostrarPagos()
         {
-            Conexion.Open();
+            connection.Open();
             List<Pago> pagos = PagoRepository.MostrarPagos();
-            Conexion.Close();
+            connection.Closed();
             return pagos;
         }
 
