@@ -22,75 +22,142 @@ namespace DAL
 
         public void ActualizarDineroPrestado(double CantidadPrestado)
         {
-            MostrarCartera();
-            cartera.DineroPrestado += CantidadPrestado;
-            ActualizarCartera("DineroPrestado",cartera.DineroPrestado.ToString());
-            cartera.DineroRestante -= CantidadPrestado;
-            ActualizarCartera("DineroRestante",cartera.DineroRestante.ToString());
+            try
+            {
+                MostrarCartera();
+                cartera.DineroPrestado += CantidadPrestado;
+                ActualizarCartera("DineroPrestado", cartera.DineroPrestado.ToString());
+                cartera.DineroRestante -= CantidadPrestado;
+                ActualizarCartera("DineroRestante", cartera.DineroRestante.ToString());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
 
         public void ActualizarDineroRestante(Double CantidadAbono) 
         {
-            MostrarCartera();
-            cartera.DineroPrestado -= CantidadAbono;
-            if (cartera.DineroPrestado < 0)
+            try
             {
-                cartera.DineroPrestado = 0;
+                MostrarCartera();
+                cartera.DineroPrestado -= CantidadAbono;
+                if (cartera.DineroPrestado < 0)
+                {
+                    cartera.DineroPrestado = 0;
+                }
+                ActualizarCartera("DineroPrestado", cartera.DineroPrestado.ToString());
+                cartera.DineroRestante += CantidadAbono;
+                if (cartera.DineroRestante > 30000000)
+                {
+                    cartera.DineroRestante = 30000000;
+                }
+                ActualizarCartera("DineroRestante", cartera.DineroRestante.ToString());
+
             }
-            ActualizarCartera("DineroPrestado", cartera.DineroPrestado.ToString());
-            cartera.DineroRestante += CantidadAbono;
-            if (cartera.DineroRestante > 30000000)
+            catch (Exception)
             {
-                cartera.DineroRestante = 30000000;
+
+                throw;
             }
-            ActualizarCartera("DineroRestante", cartera.DineroRestante.ToString());
+            
         }
 
         public void ActualizarCantidadDeudoresMenos() 
         {
-            MostrarCartera();
-            cartera.CantidadDeudores--;
-            ActualizarCartera("CantidadDeudores",cartera.CantidadDeudores.ToString());
+            try
+            {
+                MostrarCartera();
+                cartera.CantidadDeudores--;
+                ActualizarCartera("CantidadDeudores", cartera.CantidadDeudores.ToString());
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
         public void ActualizarCantidadDeudores() 
         {
-            MostrarCartera();
-            cartera.CantidadDeudores++;
-            ActualizarCartera("CantidadDeudores", cartera.CantidadDeudores.ToString());
+            try
+            {
+                MostrarCartera();
+                cartera.CantidadDeudores++;
+                ActualizarCartera("CantidadDeudores", cartera.CantidadDeudores.ToString());
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
         public bool ValidarDineroRestante(Double cantidadPrestamo) 
         {
-            MostrarCartera();
-            if (cartera.DineroRestante-cantidadPrestamo< 50)
+            try
             {
-                return true;
+                MostrarCartera();
+                if (cartera.DineroRestante - cantidadPrestamo < 50)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
         public Cartera MostrarCartera() 
         {
-            Conexion.Close();
-            Conexion.Open();
-            string Consulta = "Select * from Cartera";
-            OrdenSql = new SqlCommand(Consulta, Conexion);
-            Lector = OrdenSql.ExecuteReader();
-            Lector.Read();
-            cartera.CantidadDeudores = Convert.ToInt32(Lector["CantidadDeudores"]);
-            cartera.Capital = Convert.ToDouble(Lector["Capital"]);
-            cartera.DineroPrestado = Convert.ToDouble(Lector["DineroPrestado"]);
-            cartera.DineroRestante = Convert.ToDouble(Lector["DineroRestante"]);
-            return cartera;
+            try
+            {
+                
+                string Consulta = "Select * from Cartera";
+                OrdenSql = new SqlCommand(Consulta, Conexion);
+                Lector = OrdenSql.ExecuteReader();
+                Lector.Read();
+                cartera.CantidadDeudores = Convert.ToInt32(Lector["CantidadDeudores"]);
+                cartera.Capital = Convert.ToDouble(Lector["Capital"]);
+                cartera.DineroPrestado = Convert.ToDouble(Lector["DineroPrestado"]);
+                cartera.DineroRestante = Convert.ToDouble(Lector["DineroRestante"]);
+                return cartera;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
         public void ActualizarCartera(string Campo, string valor) 
         {
-            Conexion.Close();
-            Conexion.Open();
-            using (var Comando= Conexion.CreateCommand()) 
+            try
             {
-                Comando.CommandText = $"update Cartera set {Campo} = {valor}";
-                Comando.ExecuteNonQuery();
+                // Conexion.Close();
+                //Conexion.Open();
+                using (var Comando = Conexion.CreateCommand())
+                {
+                    Comando.CommandText = $"update Cartera set {Campo} = {valor}";
+                    Comando.ExecuteNonQuery();
+                }
+
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+          
 
 
         }

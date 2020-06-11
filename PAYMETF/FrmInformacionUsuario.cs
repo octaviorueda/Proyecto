@@ -88,10 +88,11 @@ namespace PAYMETF
 
         private void btnAbonar_Click(object sender, EventArgs e)
         {
-            Abonar();
+          
+            
         }
 
-
+      
 
 
 

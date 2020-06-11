@@ -24,10 +24,24 @@ namespace BLL
         }
         public void RegistrarPago(Pago Pago)
         {
-            connection.Open();
-            Pago.IdPago = PagoRepository.ObtenerCodigo();
-            PagoRepository.RegistrarPago(Pago);
-            connection.Closed();
+            try
+            {
+                connection.Open();
+                Pago.IdPago = PagoRepository.ObtenerCodigo();
+                PagoRepository.RegistrarPago(Pago);
+                
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
+           
         }
         public void GenerarExcel()
         {
@@ -36,10 +50,23 @@ namespace BLL
         }
         public List<Pago> MostrarPagos()
         {
-            connection.Open();
-            List<Pago> pagos = PagoRepository.MostrarPagos();
-            connection.Closed();
-            return pagos;
+            try
+            {
+                connection.Open();
+                List<Pago> pagos = PagoRepository.MostrarPagos();
+                
+                return pagos;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+                connection.Closed();
+            }
+            
         }
 
 

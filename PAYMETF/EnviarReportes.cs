@@ -19,7 +19,7 @@ namespace PAYMETF
         {
             InitializeComponent();
             txtemisor.Text = "Paymenttofeets@gmail.com";
-            txtpasword.Text = "Pa123456";
+            txtpasword.Text = "***************";
 
           
         }

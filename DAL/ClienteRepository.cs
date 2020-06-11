@@ -24,46 +24,72 @@ namespace DAL
         }
         public List<Cliente> MostrarCliente()
         {
-            Connection.Close();
-            Connection.Open();
-            string Consulta = "select * from Cliente ";
-            Ordensql = new SqlCommand(Consulta, Connection);
-            lector = Ordensql.ExecuteReader();
-            while (lector.Read())
+            try
             {
-                cliente = new Cliente
+
+                string Consulta = "select * from Cliente ";
+                Ordensql = new SqlCommand(Consulta, Connection);
+                lector = Ordensql.ExecuteReader();
+                while (lector.Read())
                 {
-                    Identificacion = lector["Identificacion"].ToString(),
-                    Nombre = lector["Nombre"].ToString(),
-                    Correo = lector["Identificacion"].ToString(),
-                    Direccion = lector["Nombre"].ToString(),
-                    Estado = lector["Estado"].ToString(),
-                    Telefono = lector["Nombre"].ToString()
-                };
-                Clientes.Add(cliente);
+                    cliente = new Cliente
+                    {
+                        Identificacion = lector["Identificacion"].ToString(),
+                        Nombre = lector["Nombre"].ToString(),
+                        Correo = lector["Correo"].ToString(),
+                        Direccion = lector["Direccion"].ToString(),
+                        Estado = lector["Estado"].ToString(),
+                        Telefono = lector["Telefono"].ToString()
+                    };
+                    Clientes.Add(cliente);
+                }
+                return Clientes;
+
+
             }
-            return Clientes;
-           
+            catch (Exception)
+            {
+
+                throw;
+            }           
         }
 
         public void ActualizarEstado(string identificacion)
         {
-            MostrarCliente();
-            List<Cliente> EstadoCliente = Clientes.FindAll(cliente => cliente.Identificacion == identificacion);
-            EstadoCliente[0].Estado = "Inactivo";
-            ActualizarCliente("Estado", EstadoCliente[0].Estado, EstadoCliente[0].Identificacion);
+            try
+            {
+                MostrarCliente();
+                List<Cliente> EstadoCliente = Clientes.FindAll(cliente => cliente.Identificacion == identificacion);
+                EstadoCliente[0].Estado = "Inactivo";
+                ActualizarCliente("Estado", EstadoCliente[0].Estado, EstadoCliente[0].Identificacion);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
 
         }
 
         public void ActualizarCliente(string campo, string valor, string identificacion)
         {
-            Connection.Close();
-            Connection.Open();
-            using (var comando = Connection.CreateCommand())
+            try
             {
-                comando.CommandText = $"update Cliente set {campo}= '{valor}' where Identificacion ={identificacion}";
-                comando.ExecuteNonQuery();
+                using (var comando = Connection.CreateCommand())
+                {
+                    comando.CommandText = $"update Cliente set {campo}= '{valor}' where Identificacion ={identificacion}";
+                    comando.ExecuteNonQuery();
+                }
+
             }
+            catch (Exception)
+            {
+
+                throw;
+            } 
+           
         }
 
         public bool BuscarExisteCliente(string identificacion)
@@ -102,7 +128,7 @@ namespace DAL
                 return true;
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
                 throw;
@@ -117,7 +143,6 @@ namespace DAL
             try
             {
                 
-               
                 using (var comando = Connection.CreateCommand())
                 {
                     comando.CommandText = "Insert into Cliente (Nombre, Direccion, Correo, Telefono, Identificacion,Estado) values(@Nombre, @Direccion, @Correo, @Telefono, @Identificacion,@Estado)";
@@ -129,8 +154,6 @@ namespace DAL
                     comando.Parameters.Add("@Estado", System.Data.SqlDbType.VarChar).Value = cliente.Estado;
                     comando.ExecuteNonQuery();
                 }
-                
-
 
 
             }
@@ -139,10 +162,7 @@ namespace DAL
 
                 throw;
             }
-            finally 
-            {
-                Connection.Close();
-            }       
+               
             
         }
 

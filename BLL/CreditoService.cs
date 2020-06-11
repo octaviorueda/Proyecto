@@ -27,24 +27,62 @@ namespace BLL
 
         public void Registrar(Credito credito)
         {
-            connection.Open();
-            credito.IdCredito = CreditoRepository.ObtenerCodigo();
-            CreditoRepository.RegistrarCredito(credito);
-            connection.Closed();
+            try
+            {
+                connection.Open();
+                credito.IdCredito = CreditoRepository.ObtenerCodigo();
+                CreditoRepository.RegistrarCredito(credito);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+
+                connection.Closed();
+            }
+           
         }
 
         public Credito BuscarCedito(String IdentifiacionCliente)
         {
-            connection.Open();
-            CreditoRepository.BuscarCredito(IdentifiacionCliente);
-            connection.Closed();
-            return CreditoRepository.Credito;
+            try
+            {
+                connection.Open();
+                CreditoRepository.BuscarCredito(IdentifiacionCliente);
+                return CreditoRepository.Credito;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
+            
         }
         public void ActualizarCredito(Credito credito)
         {
-            connection.Open();
-            CreditoRepository.ActualizarCredito(credito);
-            connection.Closed();
+            try
+            {
+                connection.Open();
+                CreditoRepository.ActualizarCredito(credito);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+                connection.Closed();
+            }
+            
         }
         public void GenerarExcel()
         {
@@ -53,10 +91,24 @@ namespace BLL
         }
         public List<Credito> MostrarCredito()
         {
-            connection.Open();
-            Creditos = CreditoRepository.MostrarCreditos();
-            connection.Closed();
-            return Creditos;
+            try
+            {
+                connection.Open();
+                Creditos = CreditoRepository.MostrarCreditos();
+                
+                return Creditos;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+                connection.Closed();
+            }
+            
         }
 
 

@@ -58,9 +58,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(180, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 15);
+            this.label1.Size = new System.Drawing.Size(48, 15);
             this.label1.TabIndex = 1;
-            this.label1.Text = "INGRESOS";
+            this.label1.Text = "PAGOS";
             // 
             // label2
             // 
@@ -68,9 +68,9 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(567, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "CARTERA";
+            this.label2.Text = "CREDITOS";
             // 
             // DataIngresos
             // 
@@ -78,7 +78,7 @@
             this.DataIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataIngresos.Location = new System.Drawing.Point(46, 42);
             this.DataIngresos.Name = "DataIngresos";
-            this.DataIngresos.Size = new System.Drawing.Size(358, 150);
+            this.DataIngresos.Size = new System.Drawing.Size(358, 204);
             this.DataIngresos.TabIndex = 3;
             // 
             // DataCartera
@@ -87,14 +87,14 @@
             this.DataCartera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataCartera.Location = new System.Drawing.Point(414, 40);
             this.DataCartera.Name = "DataCartera";
-            this.DataCartera.Size = new System.Drawing.Size(358, 150);
+            this.DataCartera.Size = new System.Drawing.Size(358, 206);
             this.DataCartera.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(180, 193);
+            this.label3.Location = new System.Drawing.Point(180, 249);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 5;
@@ -104,9 +104,9 @@
             // 
             this.DataClientes.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DataClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataClientes.Location = new System.Drawing.Point(46, 209);
+            this.DataClientes.Location = new System.Drawing.Point(46, 267);
             this.DataClientes.Name = "DataClientes";
-            this.DataClientes.Size = new System.Drawing.Size(358, 150);
+            this.DataClientes.Size = new System.Drawing.Size(358, 201);
             this.DataClientes.TabIndex = 6;
             this.DataClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataClientes_CellContentClick);
             // 
@@ -114,7 +114,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(60, 79);
+            this.label4.Location = new System.Drawing.Point(59, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 15);
             this.label4.TabIndex = 7;
@@ -124,7 +124,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(12, 43);
+            this.label5.Location = new System.Drawing.Point(11, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 15);
             this.label5.TabIndex = 8;
@@ -134,7 +134,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(76, 114);
+            this.label6.Location = new System.Drawing.Point(75, 139);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 15);
             this.label6.TabIndex = 9;
@@ -144,7 +144,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(3, 12);
+            this.label7.Location = new System.Drawing.Point(2, 35);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(130, 15);
             this.label7.TabIndex = 10;
@@ -152,28 +152,28 @@
             // 
             // txtDinerodisponible
             // 
-            this.txtDinerodisponible.Location = new System.Drawing.Point(140, 12);
+            this.txtDinerodisponible.Location = new System.Drawing.Point(139, 35);
             this.txtDinerodisponible.Name = "txtDinerodisponible";
             this.txtDinerodisponible.Size = new System.Drawing.Size(100, 20);
             this.txtDinerodisponible.TabIndex = 11;
             // 
             // txtDineroprestado
             // 
-            this.txtDineroprestado.Location = new System.Drawing.Point(140, 43);
+            this.txtDineroprestado.Location = new System.Drawing.Point(139, 66);
             this.txtDineroprestado.Name = "txtDineroprestado";
             this.txtDineroprestado.Size = new System.Drawing.Size(100, 20);
             this.txtDineroprestado.TabIndex = 12;
             // 
             // txtDeudores
             // 
-            this.txtDeudores.Location = new System.Drawing.Point(140, 79);
+            this.txtDeudores.Location = new System.Drawing.Point(139, 102);
             this.txtDeudores.Name = "txtDeudores";
             this.txtDeudores.Size = new System.Drawing.Size(100, 20);
             this.txtDeudores.TabIndex = 13;
             // 
             // txtCapital
             // 
-            this.txtCapital.Location = new System.Drawing.Point(140, 114);
+            this.txtCapital.Location = new System.Drawing.Point(139, 137);
             this.txtCapital.Name = "txtCapital";
             this.txtCapital.Size = new System.Drawing.Size(100, 20);
             this.txtCapital.TabIndex = 14;
@@ -184,7 +184,7 @@
             this.btnGenerarExcel.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
             this.btnGenerarExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarExcel.Image")));
             this.btnGenerarExcel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGenerarExcel.Location = new System.Drawing.Point(243, 12);
+            this.btnGenerarExcel.Location = new System.Drawing.Point(242, 35);
             this.btnGenerarExcel.Name = "btnGenerarExcel";
             this.btnGenerarExcel.Size = new System.Drawing.Size(118, 123);
             this.btnGenerarExcel.TabIndex = 15;
@@ -199,7 +199,7 @@
             this.btnCerrar.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrar.Location = new System.Drawing.Point(657, 439);
+            this.btnCerrar.Location = new System.Drawing.Point(654, 477);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(121, 29);
             this.btnCerrar.TabIndex = 16;
@@ -219,9 +219,9 @@
             this.panel2.Controls.Add(this.txtDineroprestado);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtDinerodisponible);
-            this.panel2.Location = new System.Drawing.Point(414, 209);
+            this.panel2.Location = new System.Drawing.Point(414, 267);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(364, 150);
+            this.panel2.Size = new System.Drawing.Size(364, 201);
             this.panel2.TabIndex = 17;
             // 
             // FrmCartera

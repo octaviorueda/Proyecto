@@ -25,44 +25,127 @@ namespace BLL
         }
         public void ActualizarCanttidadDeudoresMenos()
         {
-            connection.Open();
-            CarteraRepository.ActualizarCantidadDeudoresMenos();
-            connection.Closed();
+            try
+            {
+
+                connection.Open();
+                CarteraRepository.ActualizarCantidadDeudoresMenos();
+                
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally 
+            {
+                connection.Closed();
+            }
         }
         public void ActualizarCanttidadDeudores()
         {
-            connection.Open();
-            CarteraRepository.ActualizarCantidadDeudores();
-            connection.Closed();
+            try
+            {
+                connection.Open();
+                CarteraRepository.ActualizarCantidadDeudores();
+                
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
+           
         }
         public void ActualizarDineroPrestado(double CantidadPrestado)
         {
-            connection.Open();
-            CarteraRepository.ActualizarDineroPrestado(CantidadPrestado);
-            connection.Closed();
+            try
+            {
+
+                connection.Open();
+                CarteraRepository.ActualizarDineroPrestado(CantidadPrestado);
+                
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
         }
 
         public void ActualizarDineroRestante(double CantidadAbono)
         {
-            connection.Open();
-            CarteraRepository.ActualizarDineroRestante(CantidadAbono);
-            connection.Closed();
+            try
+            {
+                connection.Open();
+                CarteraRepository.ActualizarDineroRestante(CantidadAbono);
+                
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
+           
         }
 
         public bool ValidarDineroRestante(double CantidadPrestamo)
         {
-            bool SiNo;
-            connection.Open();
-            SiNo = CarteraRepository.ValidarDineroRestante(CantidadPrestamo);
-            connection.Closed();
-            return SiNo;
+            try
+            {
+                bool SiNo;
+                connection.Open();
+                SiNo = CarteraRepository.ValidarDineroRestante(CantidadPrestamo);
+                
+                return SiNo;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
+            
         }
         public Cartera MostrarCartera()
         {
-            connection.Open();
-            Cartera = CarteraRepository.MostrarCartera();
-            connection.Closed();
-            return Cartera;
+            try
+            {
+
+                connection.Open();
+                Cartera = CarteraRepository.MostrarCartera();
+                
+                return Cartera;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
         }
 
 

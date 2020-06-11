@@ -23,61 +23,102 @@ namespace DAL
         }
         public void RegistrarPago(Pago Pago)
         {
-            using (var Comando = Connection.CreateCommand())
+            try
             {
-                Comando.CommandText = "insert into Pago (IdPago, IdCliente, IdCredito, Fecha, ValorPago) values(@IdPago, @IdCliente, @IdCredito, @Fecha, @ValorPago)";
-                Comando.Parameters.Add("@IdPago", System.Data.SqlDbType.VarChar).Value = Pago.IdPago;
-                Comando.Parameters.Add("@IdCredito", System.Data.SqlDbType.VarChar).Value = Pago.IdCredito;
-                Comando.Parameters.Add("@IdCliente", System.Data.SqlDbType.VarChar).Value = Pago.IdCliente;
-                Comando.Parameters.Add("@Fecha", System.Data.SqlDbType.DateTime).Value = Pago.Fecha;
-                Comando.Parameters.Add("@ValorPago", System.Data.SqlDbType.VarChar).Value = Pago.ValorPago;
-                Comando.ExecuteNonQuery();
+                using (var Comando = Connection.CreateCommand())
+                {
+                    Comando.CommandText = "insert into Pago (IdPago, IdCliente, IdCredito, Fecha, ValorPago) values(@IdPago, @IdCliente, @IdCredito, @Fecha, @ValorPago)";
+                    Comando.Parameters.Add("@IdPago", System.Data.SqlDbType.VarChar).Value = Pago.IdPago;
+                    Comando.Parameters.Add("@IdCredito", System.Data.SqlDbType.VarChar).Value = Pago.IdCredito;
+                    Comando.Parameters.Add("@IdCliente", System.Data.SqlDbType.VarChar).Value = Pago.IdCliente;
+                    Comando.Parameters.Add("@Fecha", System.Data.SqlDbType.DateTime).Value = Pago.Fecha;
+                    Comando.Parameters.Add("@ValorPago", System.Data.SqlDbType.VarChar).Value = Pago.ValorPago;
+                    Comando.ExecuteNonQuery();
+                }
+
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+           
         }
 
         public List<Pago> MostrarPagos()
         {
-            Connection.Close();
-            Connection.Open();
-            string Consulta = "Select * from Pago";
-            OrdenSql = new SqlCommand(Consulta, Connection);
-            Lector = OrdenSql.ExecuteReader();
-            while (Lector.Read())
+            try
             {
-                Pago = new Pago
+                string Consulta = "Select * from Pago";
+                OrdenSql = new SqlCommand(Consulta, Connection);
+                Lector = OrdenSql.ExecuteReader();
+                while (Lector.Read())
                 {
-                    IdPago = Lector["IdPago"].ToString(),
-                    Fecha = Convert.ToDateTime(Lector["Fecha"]),
-                    IdCliente = Lector["IdCliente"].ToString(),
-                    IdCredito = Lector["IdCredito"].ToString(),
-                    ValorPago = Convert.ToDouble(Lector["ValorPago"])
-                };
-                Pagos.Add(Pago);
+                    Pago = new Pago
+                    {
+                        IdPago = Lector["IdPago"].ToString(),
+                        Fecha = Convert.ToDateTime(Lector["Fecha"]),
+                        IdCliente = Lector["IdCliente"].ToString(),
+                        IdCredito = Lector["IdCredito"].ToString(),
+                        ValorPago = Convert.ToDouble(Lector["ValorPago"])
+                    };
+                    Pagos.Add(Pago);
+                }
+                return Pagos;
+
             }
-            return Pagos;
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            //Connection.Close();
+            //Connection.Open();
+            
         }
         public string ObtenerCodigo()
         {
-            string codigo;
-            string Consulta = "select codigoPago from Codigos";
-            OrdenSql = new SqlCommand(Consulta, Connection);
-            Lector = OrdenSql.ExecuteReader();
-            Lector.Read();
-            codigo = Convert.ToString(Lector["CodigoPago"]);
-            ActualizarCodigo(codigo);
-            return codigo;
+            try
+            {
+                string codigo;
+                string Consulta = "select codigoPago from Codigos";
+                OrdenSql = new SqlCommand(Consulta, Connection);
+                Lector = OrdenSql.ExecuteReader();
+                Lector.Read();
+                codigo = Convert.ToString(Lector["CodigoPago"]);
+                ActualizarCodigo(codigo);
+                return codigo;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public void ActualizarCodigo(string codigo)
         {
-            Connection.Close();
-            Connection.Open();
-            using (var Comando = Connection.CreateCommand())
+            try
             {
-                Comando.CommandText = $"update Codigos set codigoPago = {Convert.ToInt32(codigo)}+1";
-                Comando.ExecuteNonQuery();
+                using (var Comando = Connection.CreateCommand())
+                {
+                    Comando.CommandText = $"update Codigos set codigoPago = {Convert.ToInt32(codigo)}+1";
+                    Comando.ExecuteNonQuery();
 
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           // Connection.Close();
+            //onnection.Open();
+           
         }
 
 
