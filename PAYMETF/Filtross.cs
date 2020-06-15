@@ -16,9 +16,11 @@ namespace PAYMETF
     {
         Cliente cliente;
         CarteraService carteraService;
+        CreditoService creditoService;
         ClienteService clienteService;
         List<Cliente> clientes;
-        
+        List<Pago> pagos;
+        List<Credito> creditos;
         public Filtross()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace PAYMETF
         private void inicializar() 
         {
             cliente = new Cliente();
+            creditoService = new CreditoService(ConfigConnection.connectionString);
             carteraService = new CarteraService(ConfigConnection.connectionString);
             clienteService = new ClienteService(ConfigConnection.connectionString);
 
@@ -95,6 +98,24 @@ namespace PAYMETF
         {
             cargarClientes();
 
+        }
+
+        private void datostodos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtnombre.Text = datostodos.CurrentRow.Cells[0].Value.ToString();
+            txtidentificcion.Text =datostodos.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private void btncargarinfo_Click(object sender, EventArgs e)
+        {
+            string id;
+            if (cmbinformacion.SelectedIndex == 0)
+            {
+                id = txtidentificcion.Text;
+                pagos = creditoService.mostarpagosclientes(id);
+                datafiltros.DataSource = pagos;
+            }
+            
         }
     }
 }

@@ -13,10 +13,12 @@ namespace BLL
 {
     public class CreditoService
     {
-      
+
         public Credito Credito;
         CreditoRepository CreditoRepository;
         List<Credito> Creditos;
+        List<Pago> pagos = new List<Pago>() ;
+        public Pago pago;
         private ConnectionManager connection;
 
         public CreditoService(string connetionstring)
@@ -38,12 +40,32 @@ namespace BLL
 
                 throw;
             }
-            finally 
+            finally
             {
 
                 connection.Closed();
             }
-           
+
+        }
+
+        public List<Pago> mostarpagosclientes(string id)
+        {
+            try
+            {
+                connection.Open();
+                pagos = CreditoRepository.MostarPagosCliente(id);
+                return pagos;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
+
         }
 
         public Credito BuscarCedito(String IdentifiacionCliente)

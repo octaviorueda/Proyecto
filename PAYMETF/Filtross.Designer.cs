@@ -133,6 +133,7 @@
             this.btncargarinfo.TabIndex = 12;
             this.btncargarinfo.Text = "CARGAR INFO";
             this.btncargarinfo.UseVisualStyleBackColor = false;
+            this.btncargarinfo.Click += new System.EventHandler(this.btncargarinfo_Click);
             // 
             // datostodos
             // 
@@ -141,6 +142,7 @@
             this.datostodos.Name = "datostodos";
             this.datostodos.Size = new System.Drawing.Size(564, 150);
             this.datostodos.TabIndex = 13;
+            this.datostodos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datostodos_CellClick);
             this.datostodos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datostodos_CellContentClick);
             // 
             // label1

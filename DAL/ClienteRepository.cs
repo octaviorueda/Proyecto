@@ -16,6 +16,8 @@ namespace DAL
         private SqlDataReader lector;
         public List<Cliente> Clientes = new List<Cliente>();
         public Cliente cliente;
+        public Pago pago;
+        public Credito credito;
 
 
         public ClienteRepository(ConnectionManager connection)
@@ -224,7 +226,7 @@ namespace DAL
             }
         }
 
-
+       
 
 
 

@@ -15,6 +15,7 @@ namespace DAL
         private SqlDataReader Lector;
         public List<Credito> Creditos = new List<Credito>();
         public Credito Credito;
+        public Pago pago;
 
         public CreditoRepository(ConnectionManager connection)
         {
@@ -166,6 +167,35 @@ namespace DAL
             }
            
         }
+
+        public List<Pago> MostarPagosCliente(string id) 
+        {
+            string Consulta = $"Select * from Pago where IdCliente = {id}";
+            OrdenSql = new SqlCommand(Consulta, Connection);
+            Lector = OrdenSql.ExecuteReader();
+            while (Lector.Read())
+            {
+                pago = new Pago
+                {
+                    IdPago = Lector["IdPago"].ToString(),
+                    Fecha = Convert.ToDateTime(Lector["Fecha"]),
+                    IdCliente = Lector["IdCliente"].ToString(),
+                    IdCredito = Lector["IdCredito"].ToString(),
+                    ValorPago = Convert.ToDouble(Lector["ValorPago"])
+                };
+                Credito.Pagos.Add(pago);
+            }
+            return Credito.Pagos;
+
+        }
+
+
+
+
+
+
+
+
 
     }
 }
