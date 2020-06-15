@@ -94,5 +94,10 @@ namespace PAYMETF
         {
             abrirfrom(new EnviarReportes());
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            abrirfrom(new Filtross());
+        }
     }
 }

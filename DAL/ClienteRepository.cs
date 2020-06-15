@@ -167,6 +167,66 @@ namespace DAL
         }
 
 
+        public List<Cliente> MostrarClienteEstado(string estado)
+        {
+            try
+            {
+
+                if (estado == "Activo")
+                {
+
+                    string Consulta = "select* from Cliente where Estado = 'Activo' ";
+                    Ordensql = new SqlCommand(Consulta, Connection);
+                    lector = Ordensql.ExecuteReader();
+                    while (lector.Read())
+                    {
+                        cliente = new Cliente
+                        {
+                            Identificacion = lector["Identificacion"].ToString(),
+                            Nombre = lector["Nombre"].ToString(),
+                            Correo = lector["Correo"].ToString(),
+                            Direccion = lector["Direccion"].ToString(),
+                            Estado = lector["Estado"].ToString(),
+                            Telefono = lector["Telefono"].ToString()
+                        };
+                        Clientes.Add(cliente);
+                    }
+                    return Clientes;
+                }
+                else
+                {
+                    string Consulta = "select* from Cliente where Estado = 'Inactivo' ";
+                    Ordensql = new SqlCommand(Consulta, Connection);
+                    lector = Ordensql.ExecuteReader();
+                    while (lector.Read())
+                    {
+                        cliente = new Cliente
+                        {
+                            Identificacion = lector["Identificacion"].ToString(),
+                            Nombre = lector["Nombre"].ToString(),
+                            Correo = lector["Correo"].ToString(),
+                            Direccion = lector["Direccion"].ToString(),
+                            Estado = lector["Estado"].ToString(),
+                            Telefono = lector["Telefono"].ToString()
+                        };
+                        Clientes.Add(cliente);
+                    }
+                    return Clientes;
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
+
 
 
 

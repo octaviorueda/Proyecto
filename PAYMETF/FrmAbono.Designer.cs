@@ -86,6 +86,7 @@
             this.cmbCuota.Name = "cmbCuota";
             this.cmbCuota.Size = new System.Drawing.Size(121, 21);
             this.cmbCuota.TabIndex = 6;
+            this.cmbCuota.SelectedIndexChanged += new System.EventHandler(this.cmbCuota_SelectedIndexChanged);
             // 
             // txtCuotapagar
             // 

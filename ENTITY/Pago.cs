@@ -13,5 +13,9 @@ namespace ENTITY
         public string IdCliente { get; set; }
         public DateTime Fecha { get; set; }
         public double ValorPago { get; set; }
+    
+    
+    
     }
+
 }

@@ -10,7 +10,7 @@ namespace ENTITY
     {
         public Credito()
         {
-                
+                Pagos = new List<Pago>();
         }
         public string  IdCredito { get; set; }
         public string IdCliente { get; set; }
@@ -18,8 +18,8 @@ namespace ENTITY
         public double Cuota { get; set; }
         public int NumeroCuotas { get; set; }
         public double Interes { get; set; }
-        
-        private IList<Pago> Pagos = new List<Pago>();
+
+        public List<Pago> Pagos;  
 
         public void AplicarInteres() 
         {

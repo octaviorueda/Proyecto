@@ -17,7 +17,7 @@ namespace PAYMETF
     {
         Cartera Cartera;
         List<Credito> Creditos;
-        List<Pago> pagos;
+        List<Pago> pagos ;
         List<Cliente> Clientes;
         CarteraService carteraService;
         ClienteService clienteService = new ClienteService(ConfigConnection.connectionString);
@@ -37,14 +37,16 @@ namespace PAYMETF
         private void inizializar()
         {
             carteraService = new CarteraService(ConfigConnection.connectionString);
-            
             creditoService = new CreditoService(ConfigConnection.connectionString);
             pagoService = new PagoService(ConfigConnection.connectionString);
             Cartera = carteraService.MostrarCartera();
-            pagos = pagoService.MostrarPagos();
-            Clientes = clienteService.MostrarClientes();
-            Creditos = creditoService.MostrarCredito();
+            //pagos = pagoService.MostrarPagos();
+            //Clientes = clienteService.MostrarClientes();
+            //Creditos = creditoService.MostrarCredito();
 
+            pagos = carteraService.CargarPagos();
+            Clientes = carteraService.CargarClientes();
+            Creditos = carteraService.CargarCredito();
             PintarCartera();
             PintarTablas();
 
@@ -95,6 +97,11 @@ namespace PAYMETF
         }
 
         private void DataClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DataCartera_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

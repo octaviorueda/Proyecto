@@ -155,7 +155,33 @@ namespace BLL
             return ClienteRepository.cliente;
         }
 
-       
+
+
+        public List<Cliente> MostrarEstado( string estado) 
+        {
+            try
+            {
+                connection.Open();
+                Clientes = ClienteRepository.MostrarClienteEstado(estado);
+                return Clientes;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Closed();
+            }
+
+
+
+
+        }
+
+
+
 
 
 

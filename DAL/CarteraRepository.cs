@@ -8,16 +8,23 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-   public class CarteraRepository
+    public class CarteraRepository
     {
         private SqlConnection Conexion;
         private SqlCommand OrdenSql;
         private SqlDataReader Lector;
         public Cartera cartera = new Cartera();
+        public Pago pago;
+        public Cliente cliente;
+        public Credito credito;
+
+
 
         public CarteraRepository(ConnectionManager connection)
         {
             Conexion = connection.Connection;
+
+
         }
 
         public void ActualizarDineroPrestado(double CantidadPrestado)
@@ -35,11 +42,11 @@ namespace DAL
 
                 throw;
             }
-           
+
         }
 
 
-        public void ActualizarDineroRestante(Double CantidadAbono) 
+        public void ActualizarDineroRestante(Double CantidadAbono)
         {
             try
             {
@@ -63,10 +70,10 @@ namespace DAL
 
                 throw;
             }
-            
+
         }
 
-        public void ActualizarCantidadDeudoresMenos() 
+        public void ActualizarCantidadDeudoresMenos()
         {
             try
             {
@@ -80,9 +87,9 @@ namespace DAL
 
                 throw;
             }
-           
+
         }
-        public void ActualizarCantidadDeudores() 
+        public void ActualizarCantidadDeudores()
         {
             try
             {
@@ -96,9 +103,9 @@ namespace DAL
 
                 throw;
             }
-            
+
         }
-        public bool ValidarDineroRestante(Double cantidadPrestamo) 
+        public bool ValidarDineroRestante(Double cantidadPrestamo)
         {
             try
             {
@@ -114,13 +121,13 @@ namespace DAL
 
                 throw;
             }
-            
+
         }
-        public Cartera MostrarCartera() 
+        public Cartera MostrarCartera()
         {
             try
             {
-                
+
                 string Consulta = "Select * from Cartera";
                 OrdenSql = new SqlCommand(Consulta, Conexion);
                 Lector = OrdenSql.ExecuteReader();
@@ -137,9 +144,9 @@ namespace DAL
 
                 throw;
             }
-           
+
         }
-        public void ActualizarCartera(string Campo, string valor) 
+        public void ActualizarCartera(string Campo, string valor)
         {
             try
             {
@@ -157,10 +164,84 @@ namespace DAL
 
                 throw;
             }
-          
+
 
 
         }
+
+
+        public List<Pago> CargarPagos()
+        {
+
+
+            string Consulta = "Select * from Pago";
+            OrdenSql = new SqlCommand(Consulta, Conexion);
+            Lector = OrdenSql.ExecuteReader();
+            while (Lector.Read())
+            {
+                pago = new Pago
+                {
+                    IdPago = Lector["IdPago"].ToString(),
+                    Fecha = Convert.ToDateTime(Lector["Fecha"]),
+                    IdCliente = Lector["IdCliente"].ToString(),
+                    IdCredito = Lector["IdCredito"].ToString(),
+                    ValorPago = Convert.ToDouble(Lector["ValorPago"])
+                };
+                cartera.Pagos.Add(pago);
+            }
+            return cartera.Pagos;
+
+
+        }
+
+
+        public List<Cliente> CargarCliente()
+        {
+            string Consulta = "select * from Cliente ";
+            OrdenSql = new SqlCommand(Consulta, Conexion);
+            Lector = OrdenSql.ExecuteReader();
+            while (Lector.Read())
+            {
+                cliente = new Cliente
+                {
+                    Identificacion = Lector["Identificacion"].ToString(),
+                    Nombre = Lector["Nombre"].ToString(),
+                    Correo = Lector["Correo"].ToString(),
+                    Direccion = Lector["Direccion"].ToString(),
+                    Estado = Lector["Estado"].ToString(),
+                    Telefono = Lector["Telefono"].ToString()
+                };
+                cartera.Clientes.Add(cliente);
+            }
+                return cartera.Clientes;
+
+
+        }
+        
+
+        public List<Credito> CreditosCreditos()
+        {
+            string Consulta = "Select * from Credito";
+            OrdenSql = new SqlCommand(Consulta, Conexion);
+            Lector = OrdenSql.ExecuteReader();
+            while (Lector.Read())
+            {
+                credito = new Credito
+                {
+                    IdCliente = Lector["IdCliente"].ToString(),
+                    IdCredito = Lector["IdCredito"].ToString(),
+                    Saldo = Convert.ToDouble(Lector["Saldo"]),
+                    Cuota = Convert.ToDouble(Lector["Cuota"]),
+                    NumeroCuotas = Convert.ToInt32(Lector["NumeroCuota"]),
+                    Interes = Convert.ToDouble(Lector["Interes"])
+                };
+                cartera.Creditos.Add(credito);
+            }
+            return cartera.Creditos;
+
+        }
+
+
 
 
     }

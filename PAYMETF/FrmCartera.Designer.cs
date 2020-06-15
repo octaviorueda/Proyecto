@@ -89,6 +89,7 @@
             this.DataCartera.Name = "DataCartera";
             this.DataCartera.Size = new System.Drawing.Size(358, 206);
             this.DataCartera.TabIndex = 4;
+            this.DataCartera.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataCartera_CellContentClick);
             // 
             // label3
             // 

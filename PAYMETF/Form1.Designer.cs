@@ -40,10 +40,11 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.horafecha = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.LbHora = new System.Windows.Forms.Label();
             this.LbFecha = new System.Windows.Forms.Label();
             this.panelprimciapla = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -171,6 +172,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Cyan;
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnPrestamo);
             this.panel2.Controls.Add(this.LbHora);
@@ -182,8 +184,38 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 29);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(253, 518);
+            this.panel2.Size = new System.Drawing.Size(253, 527);
             this.panel2.TabIndex = 7;
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(12, 484);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(231, 31);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "FILTROS";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(12, 437);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(231, 31);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "ENVIOS Y REPORTES";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // LbHora
             // 
@@ -215,28 +247,16 @@
             this.panelprimciapla.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelprimciapla.Location = new System.Drawing.Point(249, 29);
             this.panelprimciapla.Name = "panelprimciapla";
-            this.panelprimciapla.Size = new System.Drawing.Size(838, 518);
+            this.panelprimciapla.Size = new System.Drawing.Size(838, 527);
             this.panelprimciapla.TabIndex = 8;
             this.panelprimciapla.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(12, 438);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(231, 31);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "ENVIOS Y REPORTES";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1087, 547);
+            this.ClientSize = new System.Drawing.Size(1087, 556);
             this.Controls.Add(this.panelprimciapla);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -270,6 +290,7 @@
         private System.Windows.Forms.Label LbFecha;
         private System.Windows.Forms.Label LbHora;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

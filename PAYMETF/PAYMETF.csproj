@@ -56,6 +56,12 @@
     <Compile Include="EnviarReportes.Designer.cs">
       <DependentUpon>EnviarReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Filtross.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filtross.Designer.cs">
+      <DependentUpon>Filtross.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAbono.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="Reportes.cs" />
     <EmbeddedResource Include="EnviarReportes.resx">
       <DependentUpon>EnviarReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filtross.resx">
+      <DependentUpon>Filtross.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAbono.resx">
       <DependentUpon>FrmAbono.cs</DependentUpon>

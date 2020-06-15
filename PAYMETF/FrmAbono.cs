@@ -257,5 +257,10 @@ namespace PAYMETF
         {
             Abonar();
         }
+
+        private void cmbCuota_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

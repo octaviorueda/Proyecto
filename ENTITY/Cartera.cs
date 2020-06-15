@@ -8,15 +8,21 @@ namespace ENTITY
 {
     public class Cartera
     {
-        public double  Capital { get; set; }
-        public double DineroPrestado { get; set;}
-        public double DineroRestante { get; set;}
-        public int CantidadDeudores { get; set;}
+        public double Capital { get; set; }
+        public double DineroPrestado { get; set; }
+        public double DineroRestante { get; set; }
+        public int CantidadDeudores { get; set; }
 
-        private IList<Cliente> Clientes = new List<Cliente>();
-        private IList<Credito> Creditos = new List<Credito>();
-        private IList<Pago> Pagos = new List<Pago>();
+        public List<Cliente> Clientes;
+        public List<Credito> Creditos;
+        public List<Pago> Pagos;
 
+        public Cartera()
+        {
+         Clientes = new List<Cliente>();
+         Creditos = new List<Credito>();
+         Pagos = new List<Pago>();
+        }
 
     }
 }

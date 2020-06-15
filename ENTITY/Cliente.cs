@@ -17,9 +17,11 @@ namespace ENTITY
         public string Identificacion { get; set; }
         public string Estado { get; set; }
 
+        public List<Credito> Creditos;
         public Cliente()
         {
-
-        }
+            Creditos = new List<Credito>(); 
+             
+          }
     }
 }
